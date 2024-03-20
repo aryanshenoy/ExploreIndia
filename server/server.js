@@ -1,53 +1,57 @@
 const express = require("express")
 const app = express()
+const cors = require("cors")
 
-const stateCapitals = [
-    { state: 'Andaman and Nicobar Islands', capital: 'Port Blair' },
-    { state: 'Andhra Pradesh', capital: 'Amaravati' },
-    { state: 'Arunachal Pradesh', capital: 'Itanagar' },
-    { state: 'Assam', capital: 'Dispur' },
-    { state: 'Bihar', capital: 'Patna' },
-    { state: 'Chandigarh', capital: 'Chandigarh' },
-    { state: 'Chhattisgarh', capital: 'Raipur' },
-    { state: 'Dadra and Nagar Haveli and Daman and Diu', capital: 'Daman' },
-    { state: 'Delhi', capital: 'New Delhi' },
-    { state: 'Goa', capital: 'Panaji' },
-    { state: 'Gujarat', capital: 'Gandhinagar' },
-    { state: 'Haryana', capital: 'Chandigarh' },
-    { state: 'Himachal Pradesh', capital: 'Shimla' },
-    { state: 'Jammu and Kashmir', capital: 'Srinagar' },
-    { state: 'Jharkhand', capital: 'Ranchi' },
-    { state: 'Karnataka', capital: 'Bengaluru' },
-    { state: 'Kerala', capital: 'Thiruvananthapuram' },
-    { state: 'Ladakh', capital: 'Leh' },
-    { state: 'Lakshadweep', capital: 'Kavaratti' },
-    { state: 'Madhya Pradesh', capital: 'Bhopal' },
-    { state: 'Maharashtra', capital: 'Mumbai' },
-    { state: 'Manipur', capital: 'Imphal' },
-    { state: 'Meghalaya', capital: 'Shillong' },
-    { state: 'Mizoram', capital: 'Aizawl' },
-    { state: 'Nagaland', capital: 'Kohima' },
-    { state: 'Odisha', capital: 'Bhubaneswar' },
-    { state: 'Puducherry', capital: 'Puducherry' },
-    { state: 'Punjab', capital: 'Chandigarh' },
-    { state: 'Rajasthan', capital: 'Jaipur' },
-    { state: 'Sikkim', capital: 'Gangtok' },
-    { state: 'Tamil Nadu', capital: 'Chennai' },
-    { state: 'Telangana', capital: 'Hyderabad' },
-    { state: 'Tripura', capital: 'Agartala' },
-    { state: 'Uttar Pradesh', capital: 'Lucknow' },
-    { state: 'Uttarakhand', capital: 'Dehradun' },
-    { state: 'West Bengal', capital: 'Kolkata' }
-  ]  
+app.use(cors("http://localhost:5173/"));
+
+const stateCapitals = {
+    "INAN": { state: 'Andaman and Nicobar Islands', capital: 'Port Blair' },
+    "INAP": { state: 'Andhra Pradesh', capital: 'Amaravati' },
+    "INAR": { state: 'Arunachal Pradesh', capital: 'Itanagar' },
+    "INAS": { state: 'Assam', capital: 'Dispur' },
+    "INBH": { state: 'Bihar', capital: 'Patna' },
+    "INCH": { state: 'Chandigarh', capital: 'Chandigarh' },
+    "INCT": { state: 'Chhattisgarh', capital: 'Raipur' },
+    "INDN": { state: 'Dadra and Nagar Haveli and Daman and Diu', capital: 'Daman' },
+    "INDL": { state: 'Delhi', capital: 'New Delhi' },
+    "INGA": { state: 'Goa', capital: 'Panaji' },
+    "INGJ": { state: 'Gujarat', capital: 'Gandhinagar' },
+    "INHR": { state: 'Haryana', capital: 'Chandigarh' },
+    "INHP": { state: 'Himachal Pradesh', capital: 'Shimla' },
+    "INJK": { state: 'Jammu and Kashmir', capital: 'Srinagar' },
+    "INJH": { state: 'Jharkhand', capital: 'Ranchi' },
+    "INKA": { state: 'Karnataka', capital: 'Bengaluru' },
+    "INKL": { state: 'Kerala', capital: 'Thiruvananthapuram' },
+    "INLD": { state: 'Ladakh', capital: 'Leh' },
+    "INLA": { state: 'Lakshadweep', capital: 'Kavaratti' },
+    "INMP": { state: 'Madhya Pradesh', capital: 'Bhopal' },
+    "INMH": { state: 'Maharashtra', capital: 'Mumbai' },
+    "INMN": { state: 'Manipur', capital: 'Imphal' },
+    "INML": { state: 'Meghalaya', capital: 'Shillong' },
+    "INMZ": { state: 'Mizoram', capital: 'Aizawl' },
+    "INNL": { state: 'Nagaland', capital: 'Kohima' },
+    "INOD": { state: 'Odisha', capital: 'Bhubaneswar' },
+    "INPY": { state: 'Puducherry', capital: 'Puducherry' },
+    "INPB": { state: 'Punjab', capital: 'Chandigarh' },
+    "INRJ": { state: 'Rajasthan', capital: 'Jaipur' },
+    "INSK": { state: 'Sikkim', capital: 'Gangtok' },
+    "INTN": { state: 'Tamil Nadu', capital: 'Chennai' },
+    "INTG": { state: 'Telangana', capital: 'Hyderabad' },
+    "INTR": { state: 'Tripura', capital: 'Agartala' },
+    "INUP": { state: 'Uttar Pradesh', capital: 'Lucknow' },
+    "INUT": { state: 'Uttarakhand', capital: 'Dehradun' },
+    "INWB": { state: 'West Bengal', capital: 'Kolkata' }
+};
 
 app.get("/",(req,res) => {
-    const {name} =  req.query;
-    const state = stateCapitals.find(state => state.state === "Karnataka");
 
-    if(!state){
+    const { stateID } = req.query;
+    const stateInfo = stateCapitals[stateID];
+
+    if(!stateInfo){
         res.status(404).json({error : "State not found"});
     }else{
-        res.json(state);
+        res.json(stateInfo);
     }
 })
 

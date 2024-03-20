@@ -1,0 +1,15 @@
+#info-box{
+    background-color: white;
+    border: 1px black solid;
+    border-radius: 5px;
+    position: absolute;
+    padding: 10px;
+}
+
+#india-map{
+    transform: scale(0.6);
+}
+
+svg{
+    position: absolute;
+}
