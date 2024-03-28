@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Map from "./Map"
 import InfoBox from "./InfoBox"
+import NavBar from "./NavBar";
 
 function App(){
 
@@ -9,7 +10,7 @@ function App(){
 
 	useEffect(() => {
 		const handleMouseMovement = (event) => {
-			setboxPosition({x : event.clientX + 10 , y : event.clientY + 10});
+			setboxPosition({x : event.clientX + 15 , y : event.clientY + 15});
 		}
 
 		window.addEventListener("mousemove",handleMouseMovement);
@@ -18,6 +19,7 @@ function App(){
 			window.removeEventListener("mousemove",handleMouseMovement);
 		};
 	},[]);
+
 	return(
 		<>
 			<Map onStateHover={setfindingHoveredState}></Map>

@@ -15,7 +15,7 @@ function InfoBox({currentState,boxPosition}){
                 setstateInfo(data);
             }
             catch(error){
-                console.log("Error occured at Info Box Component");
+                console.log({error});
             };
         }
 
@@ -34,10 +34,12 @@ function InfoBox({currentState,boxPosition}){
             left: boxPosition.x,
             top: boxPosition.y,
             display: currentState ? "block" : "none",
-        }}>
-            State:{stateInfo.state}
+            }}
+            className="bg-white rounded-md border-2 absolute border-stone-950 px-2"
+        >
+            State : {stateInfo.State}
             <br />
-            Capital:{stateInfo.capital}
+            Capital : {stateInfo.Capital}
         </div>
         </>
     );
