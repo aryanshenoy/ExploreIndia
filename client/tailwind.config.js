@@ -7,6 +7,9 @@ export default {
     extend: {
       scale: {
         '580':'0.58'
+      },
+      zIndex: {
+        '0.1':'1'
       }
     },
   },

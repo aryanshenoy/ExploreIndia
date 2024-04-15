@@ -7,6 +7,7 @@ function App(){
 
 	const [findingHoveredState,setfindingHoveredState] = useState(null);
 	const [boxPosition,setboxPosition] = useState({x : 0 , y : 0});
+	const [navIsOpen,setnavIsOpen] = useState(true);
 
 	useEffect(() => {
 		const handleMouseMovement = (event) => {
@@ -22,12 +23,16 @@ function App(){
 
 	return(
 		<>
-			<Map onStateHover={setfindingHoveredState}></Map>
-			{findingHoveredState && 
-			<InfoBox
+		
+			<NavBar navBarStatus={navIsOpen} toggleNav={() => setnavIsOpen(!navIsOpen)}></NavBar>
+			<div className={navIsOpen ? "blur-sm" : ""}>
+				<Map onStateHover={setfindingHoveredState}></Map>
+				{findingHoveredState && 
+				<InfoBox
 			 	currentState={findingHoveredState}
 				boxPosition={boxPosition}>
-			</InfoBox>}
+				</InfoBox>}
+			</div>
 		</>
 	)
 }
