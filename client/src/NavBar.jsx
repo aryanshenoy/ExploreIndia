@@ -1,4 +1,7 @@
 import { useState } from "react";
+import CloseSVG from "./assets/chevron-left-navigation-svgrepo-com.svg";
+import OpenSVG from "./assets/navigation-bar-menubar-hamburger-menu-svgrepo-com.svg";
+
 
 function NavBar({navBarStatus,toggleNav}){
 
@@ -8,16 +11,20 @@ function NavBar({navBarStatus,toggleNav}){
 
     return(
         <>
-        <div id="navBarView" className={`${navBarStatus?"w-44":"w-0"} transition-all bg-teal-700 h-screen pt-5 fixed top-0 left-0 z-0.1 text-center`}>
-            <button className="p-3 rounded hover:bg-red-950"
-                    onClick={toggle}>
-                {navBarStatus ? "Close" : "Open"}
-            </button>
-            {navBarStatus && <div>
-                                <a className = "block pt-3 ps-3 pb-3 pr-3 rounded" href="">Home</a>
-                                <a className = "block pt-3 ps-3 pb-3 pr-3 rounded" href="">About Us</a>   
-                             </div>
-            }
+        <div className="flex flex-col">
+            <img src={navBarStatus ? CloseSVG : OpenSVG}
+                 alt="navBar"
+                 onClick={toggle}
+                 className="fixed top-0 z-10 cursor-pointer dark:invert"/>
+            <div id="navBarView" className={`${navBarStatus?"w-44":"w-0"} transition-all dark:invert bg-red-300 h-screen pt-5 fixed top-0 left-0 z-0.1 text-center`}>
+                {navBarStatus 
+                    && 
+                    <div>
+                        <a className = "block pt-52 pb-3 pr-3 rounded font-mono text-2xl" href="">Home</a>
+                        <a className = "block pt-14 pb-3 pr-3 rounded font-mono text-2xl" href="">About Us</a>   
+                    </div>
+                }
+            </div>
         </div>
         </>
     );

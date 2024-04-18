@@ -20,7 +20,7 @@ function Map({onStateHover}){
 
     return(
         <div id="india-map" className="m-0 scale-580 grid justify-items-center">
-            <svg className = "absolute fill-orange-400 h-1000 stroke-blue-800 stroke-linecap-round stroke-linejoin-round stroke-0.2"
+            <svg className = "absolute fill-orange-400 dark:invert h-1000 stroke-zinc-950 stroke-linecap-round stroke-linejoin-round stroke-0.2"
                  baseprofile="tiny"
                  height="1000"
                  version="1.2"

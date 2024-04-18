@@ -10,9 +10,10 @@ export default {
       },
       zIndex: {
         '0.1':'1'
-      }
+      },
     },
   },
   plugins: [],
+  darkMode: "class",
 }
 
