@@ -6,21 +6,19 @@ function Map({onStateHover}){
 
     const mouseEntering = (event,stateID) => {
         event.target.style.fill = "gray";
-        event.target.style.stroke = "#FFD700";
         setHoveredState(stateID);
         onStateHover(stateID);
     };
 
     const mouseLeaving = (event) => {
         event.target.style.fill = "";
-        event.target.style.stroke="";
         setHoveredState(null);
         onStateHover(null);
     }
 
     return(
         <div id="india-map" className="m-0 scale-580 grid justify-items-center">
-            <svg className = "absolute fill-orange-400 dark:invert h-1000 stroke-zinc-950 stroke-linecap-round stroke-linejoin-round stroke-0.2"
+            <svg className = "absolute fill-orange-500 dark:fill-yellow-600 dark:stroke-zinc-100 h-1000 stroke-zinc-950 stroke-linecap-round stroke-linejoin-round stroke-0.2"
                  baseprofile="tiny"
                  height="1000"
                  version="1.2"
