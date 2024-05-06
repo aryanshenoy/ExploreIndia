@@ -6,44 +6,43 @@ import LightSVG from "./assets/light-mode-svgrepo-com.svg";
 
 
 function NavBar({navBarStatus,toggleNav}){
-
-    const [theme,settheme] = useState("light");
-    
-    useEffect(() => {
-        if(theme==="dark"){
-            document.body.classList.add("dark");
-        }
-        else{
-            document.body.classList.remove("dark");
-        }
-
-    },[theme])
-
+    let autochangetheme = "dark";
+    const [theme,settheme] = useState(autochangetheme);
     const toggle = () => {
         toggleNav(navBarStatus);
     };
-
+    console.log(autochangetheme)
     const handleThemeSwitch = () => {
-        if(theme==="light"){
-            settheme("dark");
-        }
-        else{
-            settheme("light");
-        }
-    }
+		if(theme==="dark"){
+			autochangetheme="light";
+            settheme(autochangetheme);}
+		else{
+			autochangetheme="dark";
+            settheme(autochangetheme)}
+	}
+
+    useEffect(() => {
+		if(theme==="dark"){
+			document.body.classList.add("dark");
+		}
+		else{
+			document.body.classList.remove("dark");
+		}
+	},[theme])
 
     return(
         <>
-        <img src={theme==="dark" ? LightSVG : DarkSVG}
-            alt="Mode"
-            className="fixed top-1 right-1 h-11"
-            onClick={handleThemeSwitch}
-        />
+        <img 
+		      src={theme==="dark" ? LightSVG : DarkSVG}
+			  alt="Theme Icon"
+			  onClick={handleThemeSwitch}
+			  className="absolute z-10 right-0 size-14 top-2"
+		/>
         <div className="flex flex-col">
             <img src={navBarStatus ? CloseSVG : OpenSVG}
                  alt="navBar"
                  onClick={toggle}
-                 className="fixed top-0 z-10 h-12 cursor-pointer dark:invert"
+                 className="fixed top-2 z-10 h-12 cursor-pointer dark:invert"
             />
             <div id="navBarView" className={`${navBarStatus?"w-44":"w-0"} transition-all dark:bg-red-950 bg-red-300 h-screen pt-5 fixed top-0 left-0 z-0.1 text-center`}>
                 {navBarStatus 

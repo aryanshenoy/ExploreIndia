@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 function Map({onStateHover}){
     const[hoveredState,setHoveredState] = useState(null);
+    const [drawerIsOpen,setdrawerIsOpen] = useState(false);
 
     const mouseEntering = (event,stateID) => {
         event.target.style.fill = "gray";
@@ -362,6 +363,7 @@ function Map({onStateHover}){
                     </circle>
                 </g>
             </svg>
+            {drawerIsOpen && <DrawBox drawerStatus={drawerIsOpen} toggleDrawer={toggleDrawer} />}
         </div>
     );
 }

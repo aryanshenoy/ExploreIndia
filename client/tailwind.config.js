@@ -11,6 +11,9 @@ export default {
       zIndex: {
         '0.1':'1'
       },
+      blur: {
+        s:"2px",
+      },
     },
   },
   plugins: [],

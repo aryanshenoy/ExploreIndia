@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
+
 import Map from "./Map"
 import InfoBox from "./InfoBox"
 import NavBar from "./NavBar";
+import DrawBox from "./DrawBox";
 
 import "./App.css"
 
@@ -22,16 +24,18 @@ function App(){
 	},[]);
 
 	return(
+		<>
 		<div className="bg-teal-200 h-screen w-screen dark:bg-zinc-950">
 			<NavBar navBarStatus={navIsOpen} toggleNav={() => setnavIsOpen(!navIsOpen)}/>
-			<div className={navIsOpen ? "blur-sm" : ""}>
-				<Map onStateHover={setfindingHoveredState}></Map>
+			<div className={navIsOpen ? "blur-s" : ""}>
+				<Map onStateHover={setfindingHoveredState}/>
 				{findingHoveredState && 
 				<InfoBox
 			 	currentState={findingHoveredState}
 				boxPosition={boxPosition}/>}
 			</div>
 		</div>
+		</>
 	)
 }
 

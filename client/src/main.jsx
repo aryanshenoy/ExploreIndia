@@ -7,7 +7,6 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Root from "./routes/AboutUs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +15,7 @@ const router = createBrowserRouter([
   },
   {
     path: "about-us",
-    element: <AboutUs/>
+    element: <AboutUs />
   }
 ]);
 

@@ -3,7 +3,8 @@ import { useState } from "react"
 import { useEffect } from "react"
 
 function InfoBox({currentState,boxPosition}){
-    const [stateInfo,setstateInfo] = useState({})
+    const [stateInfo,setstateInfo] = useState({});
+    const [stateId,setstateId] = useState("");
 
     useEffect(() => {
         const fetchData = async (stateID) => {
@@ -14,6 +15,7 @@ function InfoBox({currentState,boxPosition}){
             }
             const data = await response.json();
             setstateInfo(data);
+            setstateId(stateID);
         }
         if(currentState)
             fetchData(currentState);
@@ -29,9 +31,17 @@ function InfoBox({currentState,boxPosition}){
             }}
             className="bg-white rounded-md border-2 absolute border-stone-950 px-2"
         >
-            State : {stateInfo.State}
-            <br />
-            Capital : {stateInfo.Capital}
+            {stateId === "INAN" || stateId === "INCH" || stateId === "INDH" || stateId === "INDL" || stateId === "INLA" || stateId === "INJK" || stateId === "INLD" || stateId === "INPY" ? (
+                <>
+                <div>Union Territory : {stateInfo.State}</div>
+                <div>Capital : {stateInfo.Capital}</div>
+                </>
+            ) : (
+                <>
+                <div>State : {stateInfo.State}</div>
+                <div>Capital : {stateInfo.Capital}</div>
+                </>
+            )}
         </div>
         </>
     );
