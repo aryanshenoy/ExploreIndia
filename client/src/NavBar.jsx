@@ -48,7 +48,7 @@ function NavBar({navBarStatus,toggleNav}){
                 {navBarStatus 
                     && 
                     <div>
-                        <a className = "block pt-40 pb-3 pr-3 rounded font-mono text-2xl dark:text-zinc-200" href="/">Home</a>
+                        <a className = "block pt-40 pb-3 pr-3 rounded font-mono text-2xl dark:text-zinc-200" href="home">Home</a>
                         <a className = "block pt-14 pb-3 pr-3 rounded font-mono text-2xl dark:text-zinc-200" href="about-us">About Us</a>   
                     </div>
                 }
