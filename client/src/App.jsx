@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 import Map from "./Map"
 import InfoBox from "./InfoBox"
 import NavBar from "./NavBar";
-import DrawBox from "./DrawBox";
 
 import "./App.css"
 

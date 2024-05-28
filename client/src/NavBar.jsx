@@ -11,7 +11,6 @@ function NavBar({navBarStatus,toggleNav}){
     const toggle = () => {
         toggleNav(navBarStatus);
     };
-    console.log(autochangetheme)
     const handleThemeSwitch = () => {
 		if(theme==="dark"){
 			autochangetheme="light";
