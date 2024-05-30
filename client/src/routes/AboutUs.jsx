@@ -1,6 +1,7 @@
 import { useState , useEffect} from "react";
 
 import NavBar from "../NavBar";
+import Theme from "../Theme";
 
 import GitHub from "../assets/github-142-svgrepo-com.svg";
 import Instagram from "../assets/instagram-svgrepo-com.svg";
@@ -11,6 +12,7 @@ function AboutUs(){
 
     return(
         <>
+            <Theme></Theme>
             <NavBar navBarStatus={navIsOpen} toggleNav={() => setnavIsOpen(!navIsOpen)}/>
             <div className={navIsOpen ? "blur-sm" : ""}>
                 <div className="bg-teal-200 h-screen w-screen dark:bg-zinc-950">

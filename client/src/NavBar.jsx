@@ -1,42 +1,14 @@
 import { useState,useEffect } from "react";
 import CloseSVG from "./assets/chevron-left-navigation-svgrepo-com.svg";
 import OpenSVG from "./assets/navigation-bar-menubar-hamburger-menu-svgrepo-com.svg";
-import DarkSVG from "./assets/dark-mode-night-moon-svgrepo-com.svg";
-import LightSVG from "./assets/light-mode-svgrepo-com.svg";
 
 
 function NavBar({navBarStatus,toggleNav}){
-    let autochangetheme = "dark";
-    const [theme,settheme] = useState(autochangetheme);
     const toggle = () => {
         toggleNav(navBarStatus);
     };
-    const handleThemeSwitch = () => {
-		if(theme==="dark"){
-			autochangetheme="light";
-            settheme(autochangetheme);}
-		else{
-			autochangetheme="dark";
-            settheme(autochangetheme)}
-	}
-
-    useEffect(() => {
-		if(theme==="dark"){
-			document.body.classList.add("dark");
-		}
-		else{
-			document.body.classList.remove("dark");
-		}
-	},[theme])
-
     return(
         <>
-        <img 
-		      src={theme==="dark" ? LightSVG : DarkSVG}
-			  alt="Theme Icon"
-			  onClick={handleThemeSwitch}
-			  className="absolute z-10 right-0 size-14 top-2"
-		/>
         <div className="flex flex-col">
             <img src={navBarStatus ? CloseSVG : OpenSVG}
                  alt="navBar"

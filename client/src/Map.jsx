@@ -27,6 +27,7 @@ function Map({onStateHover}){
     const handleCloseButtonClick = () => {
         setdrawerOpen(!drawerOpen);
     }
+
     return(
         <>
             <div id="india-map" className="m-0 scale-580 grid justify-items-center">

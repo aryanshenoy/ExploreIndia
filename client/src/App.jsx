@@ -5,6 +5,7 @@ import InfoBox from "./InfoBox"
 import NavBar from "./NavBar";
 
 import "./App.css"
+import Theme from "./Theme";
 
 function App(){
 
@@ -24,6 +25,7 @@ function App(){
 
 	return(
 		<>
+		<Theme></Theme>
 		<div className="bg-teal-200 h-screen w-screen dark:bg-zinc-950">
 			<NavBar navBarStatus={navIsOpen} toggleNav={() => setnavIsOpen(!navIsOpen)}/>
 			<div className={navIsOpen ? "blur-s" : ""}>
