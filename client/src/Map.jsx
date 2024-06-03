@@ -4,8 +4,9 @@ import Close from "./assets/close-button-svgrepo-com.svg";
 
 function Map({onStateHover}){
     const[hoveredState,setHoveredState] = useState(null);
-    const[clickedState,setclickedState] = useState("");
+    const[clickedState,setclickedState] = useState(null);
     const [drawerOpen,setdrawerOpen] = useState(false);
+    const [stateInfo,setstateInfo] = useState({});
 
     const mouseEntering = (event,stateID) => {
         event.target.style.fill = "gray";
@@ -28,6 +29,21 @@ function Map({onStateHover}){
         setdrawerOpen(!drawerOpen);
     }
 
+    useEffect(() => {
+        const fetchData = async(clickedStateID) => {
+            const response = await fetch(`http://localhost:5700/additional-info?stateID=${clickedStateID}`);
+            if(!response.ok){
+                console.log("Data Not Recieved")
+                return
+            }
+            const data = await response.json();
+            setstateInfo(data);
+        }
+        if(clickedState){
+            console.log(`This state has been clicked${clickedState}`)
+            fetchData(clickedState);
+        }
+    },[clickedState]);
     return(
         <>
             <div id="india-map" className="m-0 scale-580 grid justify-items-center">
@@ -412,11 +428,37 @@ function Map({onStateHover}){
                     </g>
                 </svg>
             </div>
-            <div className={`${drawerOpen?"h-74":"h-0"} bg-orange-200 dark:invert absolute bottom-0 w-full `}>
-            <img src={Close}
-                 alt="Close"
-                 className={`${drawerOpen?"size-7":"size-0"} right-3 top-2 dark:invert(100%) absolute z-10`}
-                 onClick={handleCloseButtonClick}/>
+            <div className={`${drawerOpen?"h-74":"h-0"} overflow-y-auto bg-orange-200 dark:invert absolute bottom-0 w-full `}>
+                <img src={Close}
+                    alt="Close"
+                    className={`${drawerOpen?"size-7":"size-0"} right-3 top-2 dark:invert(100%) absolute z-10`}
+                    onClick={handleCloseButtonClick}/>
+                {
+                    drawerOpen && (
+                        <>
+                            <div className="font-mono text-3xl font-semibold pt-2">
+                                Welcome to {stateInfo.Name}
+                                <div className="font-serif font-thin text-xl pt-8 flex flex-row gap-8 justify-center">
+                                    <div className="px-2.5 border-2 border-neutral-800 rounded-md hover:scale-y-125 transition-transform">
+                                        Name : {stateInfo.Name}
+                                    </div>
+                                    <div className="px-2.5 border-2 border-neutral-800 rounded-md hover:scale-y-125 transition-transform">
+                                        Capital : {stateInfo.Capital}
+                                    </div>
+                                    <div className="px-2.5 border-2 border-neutral-800 rounded-md hover:scale-y-125 transition-transform">
+                                        Area (km<sup>2</sup>) : {stateInfo.Area}
+                                    </div>
+                                    <div className="px-2.5 border-2 border-neutral-800 rounded-md hover:scale-y-125 transition-transform">
+                                        Largest City : {stateInfo.LargestCity}
+                                    </div>
+                                    <div className="px-2.5 border-2 border-neutral-800 rounded-md hover:scale-y-125 transition-transform">
+                                        Formed On : {stateInfo.FormationDate}
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    )
+                }
             </div>
         </>
     );

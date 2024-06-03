@@ -8,7 +8,7 @@ function InfoBox({currentState,boxPosition}){
 
     useEffect(() => {
         const fetchData = async (stateID) => {
-            const response = await fetch(`http://localhost:5700?stateID=${stateID}`);
+            const response = await fetch(`http://localhost:5700/info-box?stateID=${stateID}`);
             if(!response.ok){
                 console.error("Data not recieved");
                 return;
