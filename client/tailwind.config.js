@@ -6,6 +6,9 @@ export default {
       "./src/**/*.{js,ts,jsx,tsx}",],
   theme: {
     extend: {
+      transitionDuration :{
+        "250" : "250ms",
+      },
       keyframes : {
         pulse:{
           "0%" : {opacity : 0.7, "font-size" : "126px"},

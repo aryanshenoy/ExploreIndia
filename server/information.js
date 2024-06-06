@@ -5,6 +5,7 @@ const informationSchema = mongoose.Schema({
     Area : Number,
     LargestCity : String,  
     FormationDate : Date,
+    Image : String
 });
 
 module.exports = mongoose.model("Information",informationSchema);

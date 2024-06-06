@@ -40,13 +40,12 @@ function Map({onStateHover}){
             setstateInfo(data);
         }
         if(clickedState){
-            console.log(`This state has been clicked${clickedState}`)
             fetchData(clickedState);
         }
     },[clickedState]);
     return(
         <>
-            <div id="india-map" className="m-0 scale-580 grid justify-items-center">
+            <div id="india-map" className="m-0 scale-580 flex justify-center">
                 <svg className = "absolute fill-orange-500 dark:fill-yellow-600 dark:stroke-zinc-100 h-1000 stroke-zinc-950 stroke-linecap-round stroke-linejoin-round stroke-0.2"
                     baseprofile="tiny"
                     height="1000"
@@ -428,31 +427,41 @@ function Map({onStateHover}){
                     </g>
                 </svg>
             </div>
-            <div className={`${drawerOpen?"h-74":"h-0"} overflow-y-auto bg-orange-200 dark:invert absolute bottom-0 w-full `}>
+            <div className={`transition-all duration-500 ease-in-out ${drawerOpen?"h-4/5 z-10":"h-0 z-0"} overflow-y-auto bg-orange-200 dark:invert absolute bottom-0 w-full `}>
                 <img src={Close}
                     alt="Close"
-                    className={`${drawerOpen?"size-7":"size-0"} right-3 top-2 dark:invert(100%) absolute z-10`}
+                    className={`${drawerOpen?"size-7":"size-0"} right-6 top-32 dark:invert(100%) fixed z-10`}
                     onClick={handleCloseButtonClick}/>
                 {
                     drawerOpen && (
                         <>
-                            <div className="font-mono text-3xl font-semibold pt-2">
-                                Welcome to {stateInfo.Name}
-                                <div className="font-serif font-thin text-xl pt-8 flex flex-row gap-8 justify-center">
-                                    <div className="px-2.5 border-2 border-neutral-800 rounded-md hover:scale-y-125 transition-transform">
+                            <div className="flex flex-col">
+                                <div className="font-mono text-3xl font-black pt-5">
+                                    Welcome to {stateInfo.Name} <p>&#x1F64F;</p>
+                                </div>
+                                <div className="font-serif text-xl pt-8 flex flex-row gap-8 justify-center">
+                                    <div className="px-2.5 border-2 border-neutral-800 rounded-md hover:scale-y-125 transition-all duration-300">
                                         Name : {stateInfo.Name}
                                     </div>
-                                    <div className="px-2.5 border-2 border-neutral-800 rounded-md hover:scale-y-125 transition-transform">
+                                    <div className="px-2.5 border-2 border-neutral-800 rounded-md hover:scale-y-125 transition-all duration-300">
                                         Capital : {stateInfo.Capital}
                                     </div>
-                                    <div className="px-2.5 border-2 border-neutral-800 rounded-md hover:scale-y-125 transition-transform">
+                                    <div className="px-2.5 border-2 border-neutral-800 rounded-md hover:scale-y-125 transition-all duration-300">
                                         Area (km<sup>2</sup>) : {stateInfo.Area}
                                     </div>
-                                    <div className="px-2.5 border-2 border-neutral-800 rounded-md hover:scale-y-125 transition-transform">
+                                    <div className="px-2.5 border-2 border-neutral-800 rounded-md hover:scale-y-125 transition-all duration-300">
                                         Largest City : {stateInfo.LargestCity}
                                     </div>
-                                    <div className="px-2.5 border-2 border-neutral-800 rounded-md hover:scale-y-125 transition-transform">
+                                    <div className="px-2.5 border-2 border-neutral-800 rounded-md hover:scale-y-125 transition-all duration-300">
                                         Formed On : {stateInfo.FormationDate}
+                                    </div>
+                                </div>
+                                <div className="pt-7 pr-7 pb-7 pl-7 flex flex-col">
+                                    <div className="font-mono text-2xl font-semibold pt-7">
+                                        {stateInfo.Name} Map
+                                    </div>
+                                    <div className="pt-7 grid justify-center size-auto">
+                                        <img src={stateInfo.Image} alt="State Map"/>
                                     </div>
                                 </div>
                             </div>
