@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/ExploreIndiaDB")
+mongoose.connect("mongodb+srv://aryanshenoys:bUs_!ZxFWSf5Q$c@explore-india.vlfsoxs.mongodb.net/")
     .then(() => console.log("Mongoose works!"))
     .catch(() => console.error("Error occors during mongoose connection"));
 
