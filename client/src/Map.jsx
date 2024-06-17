@@ -430,7 +430,7 @@ function Map({onStateHover}){
             <div className={`transition-all duration-500 ease-in-out ${drawerOpen?"h-4/5 z-10":"h-0 z-0"} overflow-y-auto bg-orange-200 dark:invert absolute bottom-0 w-full `}>
                 <img src={Close}
                     alt="Close"
-                    className={`${drawerOpen?"size-7":"size-0"} right-6 top-32 dark:invert(100%) fixed z-10`}
+                    className={`${drawerOpen?"size-7":"size-0"} right-6 top-6 dark:invert(100%) absolute z-10`}
                     onClick={handleCloseButtonClick}/>
                 {
                     drawerOpen && (
