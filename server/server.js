@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb+srv://aryanshenoys:bUs_!ZxFWSf5Q$c@explore-india.vlfsoxs.mongodb.net/")
+mongoose.connect("mongodb+srv://aryanshenoys:1BnyEbm8YrmtWtlY@aryanshenoy.jcttf7o.mongodb.net/?retryWrites=true&w=majority&appName=aryanshenoy")
     .then(() => console.log("Mongoose works!"))
-    .catch(() => console.error("Error occors during mongoose connection"));
+    .catch(() => console.error("Error occurs during mongoose connection"));
 
 //SAVING VALUES IN MONGODB
 const statesData = [
@@ -130,6 +130,7 @@ app.get("/info-box",async(req,res) => {
         res.json({State : state.Name , Capital : state.Capital});
     }
     catch(error){
+        console.log(error);
         return res.status(500).json({error : "Internal server error"});
     }
 })
