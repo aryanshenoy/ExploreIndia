@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb+srv://aryanshenoys:1BnyEbm8YrmtWtlY@aryanshenoy.jcttf7o.mongodb.net/?retryWrites=true&w=majority&appName=aryanshenoy")
+mongoose.connect("process.env.MONGO_URI")
     .then(() => console.log("Mongoose works!"))
     .catch(() => console.error("Error occurs during mongoose connection"));
 
