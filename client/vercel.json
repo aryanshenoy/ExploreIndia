@@ -4,5 +4,16 @@
             "source" : "/(.*)",
             "destination" : "/"
         }
+    ],
+    "builds": [
+        { 
+            "src": "package.json",
+            "use": "@vercel/static-build"
+        }
+    ],
+    "routes": [
+        { 
+            "src": "/assets/(.*)",
+            "dest": "/assets/$1" }
     ]
-}
+  }
