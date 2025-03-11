@@ -1,8 +1,9 @@
-const mongoose = require("mongoose");
+require("dotenv").config();
 
+const mongoose = require("mongoose");
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("Mongoose works!"))
-    .catch(() => console.error("Error occurs during mongoose connection"));
+    .catch((error) => console.error(error));
 
 //SAVING VALUES IN MONGODB
 const statesData = [
